@@ -7,68 +7,57 @@ import { Button } from "@/components/ui/button";
 const navLinks = [
   { href: "#about", label: "About" },
   { href: "#skills", label: "Skills" },
+  { href: "#labs", label: "Labs" },
   { href: "#projects", label: "Projects" },
+  { href: "#experience", label: "Experience" },
   { href: "#contact", label: "Contact" },
 ];
-
-function NavLink({ href, label, onClick }: { href: string; label: string; onClick?: () => void }) {
-  const [hovered, setHovered] = useState(false);
-  return (
-    <a
-      href={href}
-      onClick={onClick}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      style={{ color: hovered ? "#e63946" : undefined }}
-      className="px-3 py-1.5 text-[14px] font-medium text-secondary transition-colors"
-    >
-      {label}
-    </a>
-  );
-}
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
+    const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
-        ? "bg-surface border-b border-border"
-        : "bg-transparent"
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "bg-surface border-b border-border" : "bg-transparent"
         }`}
     >
       <div className="max-w-[1100px] mx-auto px-6">
         <div className="flex items-center justify-between h-14">
+
           {/* Logo */}
           <a href="#" className="flex items-center">
-            <span className="font-mono text-primary text-[14px]">cmaier.sec</span>
+            <span className="font-mono text-[13px] text-accent">cmaier.sec</span>
           </a>
 
-          {/* Desktop Navigation */}
+          {/* Desktop nav */}
           <nav className="hidden md:flex items-center gap-1">
             {navLinks.map((link) => (
-              <NavLink key={link.href} href={link.href} label={link.label} />
+              <a
+                key={link.href}
+                href={link.href}
+                className="px-3 py-1.5 text-[13px] font-mono text-secondary hover-accent"
+              >
+                {link.label}
+              </a>
             ))}
           </nav>
 
-          {/* Status Badge */}
+          {/* Status badge */}
           <div className="hidden md:flex items-center">
-            <span className="flex items-center gap-2 font-mono text-[12px] text-green bg-green/10 border border-green/20 px-3 py-1 rounded-full">
-              <span className="w-1.5 h-1.5 rounded-full bg-green status-pulse" />
-              Available
+            <span className="flex items-center gap-2 font-mono text-[11px] text-accent border border-accent/20 bg-accent/5 px-3 py-1 rounded-full">
+              <span className="w-1.5 h-1.5 rounded-full bg-accent status-pulse" />
+              available
             </span>
           </div>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile toggle */}
           <Button
             variant="ghost"
             size="icon"
@@ -79,22 +68,24 @@ export function Navbar() {
           </Button>
         </div>
 
-        {/* Mobile Navigation */}
+        {/* Mobile menu */}
         {isOpen && (
           <nav className="md:hidden py-3 border-t border-border bg-surface">
             <div className="flex flex-col gap-0.5">
               {navLinks.map((link) => (
-                <NavLink
+                <a
                   key={link.href}
                   href={link.href}
-                  label={link.label}
                   onClick={() => setIsOpen(false)}
-                />
+                  className="px-3 py-2 text-[13px] font-mono text-secondary hover-accent"
+                >
+                  {link.label}
+                </a>
               ))}
-              <div className="mt-3 px-3 flex items-center">
-                <span className="flex items-center gap-2 font-mono text-[12px] text-green bg-green/10 border border-green/20 px-3 py-1 rounded-full">
-                  <span className="w-1.5 h-1.5 rounded-full bg-green status-pulse" />
-                  Available
+              <div className="mt-3 px-3">
+                <span className="flex items-center gap-2 font-mono text-[11px] text-accent border border-accent/20 bg-accent/5 px-3 py-1 rounded-full w-fit">
+                  <span className="w-1.5 h-1.5 rounded-full bg-accent status-pulse" />
+                  available
                 </span>
               </div>
             </div>

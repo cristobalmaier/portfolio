@@ -1,96 +1,93 @@
-"use client";
-
-import { useState } from "react";
-import { Github, Linkedin, Mail } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { LucideIcon } from "lucide-react";
-
-function SocialIcon({ icon: Icon, href, label }: { icon: LucideIcon; href: string; label: string }) {
-  const [hovered, setHovered] = useState(false);
-  return (
-    <a
-      href={href}
-      target={label !== "Email" ? "_blank" : undefined}
-      rel={label !== "Email" ? "noopener noreferrer" : undefined}
-      aria-label={label}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      style={{ color: hovered ? "#e63946" : "var(--text-muted)", transition: "color 200ms ease" }}
-    >
-      <Icon className="w-5 h-5" />
-    </a>
-  );
-}
-
 export function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center pt-14 overflow-hidden bg-base">
-      {/* Subtle radial gradient */}
+      {/* Faint green radial glow */}
       <div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full pointer-events-none"
-        style={{
-          background: 'radial-gradient(circle, rgba(230,57,70,0.03) 0%, transparent 60%)'
-        }}
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full pointer-events-none"
+        style={{ background: "radial-gradient(circle, rgba(0,255,65,0.04) 0%, transparent 65%)" }}
       />
 
       <div className="relative z-10 max-w-[1100px] w-full mx-auto px-6 text-center py-20">
+
         {/* Role badge */}
-        <div className="inline-flex items-center gap-2 px-3 py-1 mb-6 rounded-md bg-elevated border border-border">
-          <span className="w-1.5 h-1.5 rounded-full bg-accent" />
-          <span className="font-mono text-[13px] text-muted">First-year Cybersecurity Student</span>
+        <div className="inline-flex items-center gap-2 px-3 py-1 mb-8 rounded-md bg-elevated border border-border">
+          <span className="w-1.5 h-1.5 rounded-full bg-accent status-pulse" />
+          <span className="font-mono text-[12px] text-muted">cybersecurity student</span>
         </div>
 
         {/* Name */}
-        <h1 className="text-[clamp(32px,5vw,72px)] font-black text-primary leading-tight tracking-tight mb-6">
+        <h1 className="text-[clamp(36px,6vw,80px)] font-black text-primary leading-tight tracking-tight mb-8">
           Cristobal Maier
         </h1>
 
-        {/* Tagline */}
-        <div className="mb-12">
-          <h2 className="text-[20px] sm:text-[24px] font-normal text-secondary max-w-2xl mx-auto flex items-center justify-center gap-[1px]">
-            <span>Mapping attack surfaces and documenting the findings.</span>
-            <span className="inline-block w-[10px] h-[24px] bg-accent cursor-blink ml-1 translate-y-[2px]" />
-          </h2>
+        {/* Terminal description block */}
+        <div className="mb-12 inline-block text-left">
+          <div className="font-mono text-[15px] sm:text-[17px] text-secondary space-y-1">
+            <div className="flex items-center gap-2">
+              <span className="text-accent select-none">{">"}</span>
+              <span>Mapping attack surfaces</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="text-accent select-none">{">"}</span>
+              <span>Breaking weak assumptions</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="text-accent select-none">{">"}</span>
+              <span>Documenting how systems fail</span>
+              <span className="inline-block w-[9px] h-[18px] bg-accent cursor-blink ml-0.5 translate-y-[1px]" />
+            </div>
+          </div>
         </div>
 
         {/* CTAs */}
         <div className="flex items-center justify-center gap-4 mb-14">
-          <Button asChild className="h-10 px-6 rounded-[6px] bg-accent hover:bg-accent-dim text-primary font-medium border-0 transition-colors">
-            <a href="#projects">View Projects</a>
-          </Button>
-          <Button asChild variant="outline" className="h-10 px-6 rounded-[6px] bg-transparent border-border text-secondary hover:border-accent hover:bg-accent/5 hover:text-primary transition-colors">
-            <a href="#contact">Get in Touch</a>
-          </Button>
+          <a
+            href="#projects"
+            className="h-10 px-6 rounded-[4px] bg-accent text-black font-mono text-[13px] font-semibold flex items-center hover:bg-accent/90 transition-colors"
+          >
+            view_projects
+          </a>
+          <a
+            href="#contact"
+            className="h-10 px-6 rounded-[4px] bg-transparent border border-border font-mono text-[13px] text-secondary flex items-center hover-accent-border"
+          >
+            initialize_contact
+          </a>
         </div>
 
-        {/* Social - Minimal */}
-        <div className="flex items-center justify-center gap-6 mb-16">
+        {/* Social links */}
+        <div className="flex items-center justify-center gap-8 mb-16">
           {[
-            { icon: Mail, href: "mailto:cristobalmaier1@gmail.com", label: "Email" },
-            { icon: Github, href: "https://github.com/cristobalmaier", label: "GitHub" },
-            { icon: Linkedin, href: "https://www.linkedin.com/in/cristobal-maier/", label: "LinkedIn" },
+            { href: "mailto:cristobalmaier1@gmail.com", label: "email" },
+            { href: "https://github.com/cristobalmaier", label: "github" },
+            { href: "https://www.linkedin.com/in/cristobal-maier/", label: "linkedin" },
           ].map((item) => (
-            <SocialIcon key={item.label} icon={item.icon} href={item.href} label={item.label} />
+            <a
+              key={item.label}
+              href={item.href}
+              target={item.label !== "email" ? "_blank" : undefined}
+              rel={item.label !== "email" ? "noopener noreferrer" : undefined}
+              className="font-mono text-[12px] text-muted hover-accent"
+            >
+              {item.label}
+            </a>
           ))}
         </div>
 
         {/* Stats */}
-        <div className="grid grid-cols-3 gap-6 max-w-2xl mx-auto py-8 border-t border-border">
+        <div className="grid grid-cols-3 gap-6 max-w-xl mx-auto py-8 border-t border-border">
           {[
-            { label: "· Machines Rooted", value: "10" },
-            { label: "· Very Easy", value: "8" },
-            { label: "· Easy", value: "2" },
+            { label: "machines_rooted", value: "10" },
+            { label: "very_easy", value: "8" },
+            { label: "easy", value: "2" },
           ].map((stat) => (
             <div key={stat.label} className="flex flex-col items-center">
-              <div className="text-[28px] font-bold text-primary mb-1">
-                {stat.value}
-              </div>
-              <div className="font-mono text-[12px] text-muted">
-                {stat.label}
-              </div>
+              <div className="text-[32px] font-bold text-primary font-mono mb-1">{stat.value}</div>
+              <div className="font-mono text-[11px] text-muted">{stat.label}</div>
             </div>
           ))}
         </div>
+
       </div>
     </section>
   );
