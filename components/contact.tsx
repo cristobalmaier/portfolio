@@ -1,6 +1,4 @@
-"use client";
-
-import { Mail, Github, Linkedin, Send, CheckCircle2 } from "lucide-react";
+import { Mail, Github, Linkedin, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const contacts = [
@@ -34,13 +32,14 @@ export function Contact() {
   return (
     <section id="contact" className="py-[120px] bg-base">
       <div className="max-w-[1100px] mx-auto px-6">
-        {/* Section header */}
+        {/* Section header with terminal prefix */}
         <div className="mb-12">
+          <span className="font-mono text-[14px] text-accent mb-2 block">$ contact</span>
           <h2 className="text-[clamp(28px,4vw,56px)] font-bold text-primary mb-4">
-            Network Request
+            Get in Touch
           </h2>
           <p className="text-[16px] text-secondary max-w-xl leading-[1.75]">
-            Interested in discussing security research, collaboration, or potential roles? Initialize a connection.
+            Interested in discussing security research, collaboration, or potential roles? Feel free to reach out.
           </p>
         </div>
 
@@ -54,10 +53,8 @@ export function Contact() {
                 target={contact.label !== "Email" ? "_blank" : undefined}
                 rel={contact.label !== "Email" ? "noopener noreferrer" : undefined}
                 className={`flex items-center gap-4 p-4 border border-border ${index !== 0 ? 'border-t-0' : ''} bg-surface hover:bg-elevated transition-colors group`}
-                onMouseEnter={(e) => { const icon = e.currentTarget.querySelector('svg'); if (icon) icon.style.color = '#e63946'; }}
-                onMouseLeave={(e) => { const icon = e.currentTarget.querySelector('svg'); if (icon) icon.style.color = ''; }}
               >
-                <contact.icon className="w-5 h-5 text-muted shrink-0 transition-colors" />
+                <contact.icon className="w-5 h-5 text-muted shrink-0 transition-colors group-hover:text-accent" />
                 <div className="flex flex-col">
                   <span className="font-semibold text-[14px] text-primary">{contact.label}</span>
                   <span className="font-mono text-[13px] text-secondary">{contact.value}</span>
@@ -71,8 +68,8 @@ export function Contact() {
             <div className="flex items-center justify-between p-6 border-b border-border">
               <span className="font-bold text-[18px] text-primary">Status</span>
               <div className="flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-green status-pulse" />
-                <span className="font-mono text-[12px] text-green">Online</span>
+                <span className="w-2 h-2 rounded-full bg-accent status-pulse" />
+                <span className="font-mono text-[12px] text-accent">Available</span>
               </div>
             </div>
 
@@ -80,7 +77,7 @@ export function Contact() {
               <ul className="space-y-4 mb-8">
                 {availability.map((item) => (
                   <li key={item} className="flex items-start gap-3">
-                    <span className="w-1.5 h-1.5 rounded-full bg-green mt-[8px] shrink-0" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-accent mt-[8px] shrink-0" />
                     <span className="text-[14px] text-secondary leading-relaxed">{item}</span>
                   </li>
                 ))}
@@ -89,11 +86,11 @@ export function Contact() {
               <Button
                 asChild
                 variant="outline"
-                className="w-full h-[48px] bg-transparent border-border text-secondary font-medium hover:border-accent hover:bg-[rgba(230,57,70,0.05)] hover:text-primary transition-colors"
+                className="w-full h-[48px] bg-transparent border-border text-secondary font-medium hover:border-accent hover:bg-accent-glow hover:text-primary transition-colors"
               >
                 <a href="mailto:cristobalmaier1@gmail.com">
                   <Send className="w-4 h-4 mr-2" />
-                  Transmit Message
+                  Send Message
                 </a>
               </Button>
             </div>

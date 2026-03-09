@@ -1,6 +1,4 @@
-"use client";
-
-import { Shield, Github, Linkedin, Mail } from "lucide-react";
+import { Github, Linkedin, Mail } from "lucide-react";
 
 export function Footer() {
   return (
@@ -9,7 +7,7 @@ export function Footer() {
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
           {/* Logo */}
           <div className="flex items-center">
-            <span className="font-mono text-muted text-[14px]">cmaier.sec</span>
+            <span className="font-mono text-muted text-[14px]">cmaier<span className="text-accent/50">.sec</span></span>
           </div>
 
           {/* Social */}
@@ -24,10 +22,7 @@ export function Footer() {
                 href={item.href}
                 target={item.label !== "Email" ? "_blank" : undefined}
                 rel={item.label !== "Email" ? "noopener noreferrer" : undefined}
-                className="text-muted transition-colors"
-                style={{ color: undefined }}
-                onMouseEnter={(e) => (e.currentTarget.style.color = "#e63946")}
-                onMouseLeave={(e) => (e.currentTarget.style.color = "")}
+                className="text-muted transition-colors hover:text-accent"
                 aria-label={item.label}
               >
                 <item.icon className="w-[18px] h-[18px]" />

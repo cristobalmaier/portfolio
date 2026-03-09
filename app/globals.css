@@ -13,23 +13,19 @@
   --border: #1f1f1f;
   --border-subtle: #181818;
 
-  /* Text — THIS IS THE MOST IMPORTANT CHANGE */
+  /* Text */
   --text-primary: #ffffff;
-  /* was cyan — now white, no exceptions */
   --text-secondary: #a0a0a0;
-  /* was cyan — now neutral grey */
   --text-muted: #4a4a4a;
-  /* timestamps, meta, filenames */
 
-  /* Accents — use sparingly */
-  --accent-red: #e63946;
-  /* primary accent, max 15% of UI */
-  --accent-red-dim: #7f1d1d;
-  /* hover states, backgrounds */
-  --accent-green: #22c55e;
-  /* ONLY for: Completed, Available, online dot */
-  --accent-amber: #f59e0b;
-  /* ONLY for: In Progress, Active states */
+  /* Terminal Green Accent - primary accent color */
+  --accent: #00FF41;
+  --accent-dim: #00cc34;
+  --accent-glow: rgba(0, 255, 65, 0.15);
+
+  /* Status colors */
+  --status-green: #00FF41;
+  --status-amber: #f59e0b;
 
   --radius: 6px;
 }
@@ -49,10 +45,11 @@
   --color-secondary: var(--text-secondary);
   --color-muted: var(--text-muted);
 
-  --color-accent: var(--accent-red);
-  --color-accent-dim: var(--accent-red-dim);
-  --color-green: var(--accent-green);
-  --color-amber: var(--accent-amber);
+  --color-accent: var(--accent);
+  --color-accent-dim: var(--accent-dim);
+  --color-accent-glow: var(--accent-glow);
+  --color-green: var(--status-green);
+  --color-amber: var(--status-amber);
 }
 
 @layer base {
@@ -178,10 +175,10 @@ body {
   border-color: var(--border-subtle);
 }
 
-/* Nav + social icon hover — explicit red accent */
+/* Nav + social icon hover — terminal green accent */
 .nav-link:hover,
 .social-icon:hover {
-  color: var(--accent-red) !important;
+  color: var(--accent) !important;
 }
 
 .cursor-blink {

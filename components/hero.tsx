@@ -1,21 +1,15 @@
-"use client";
-
-import { useState } from "react";
 import { Github, Linkedin, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { LucideIcon } from "lucide-react";
 
 function SocialIcon({ icon: Icon, href, label }: { icon: LucideIcon; href: string; label: string }) {
-  const [hovered, setHovered] = useState(false);
   return (
     <a
       href={href}
       target={label !== "Email" ? "_blank" : undefined}
       rel={label !== "Email" ? "noopener noreferrer" : undefined}
       aria-label={label}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      style={{ color: hovered ? "#e63946" : "var(--text-muted)", transition: "color 200ms ease" }}
+      className="text-muted hover:text-accent transition-colors duration-200"
     >
       <Icon className="w-5 h-5" />
     </a>
@@ -25,11 +19,11 @@ function SocialIcon({ icon: Icon, href, label }: { icon: LucideIcon; href: strin
 export function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center pt-14 overflow-hidden bg-base">
-      {/* Subtle radial gradient */}
+      {/* Subtle radial gradient with terminal green */}
       <div
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full pointer-events-none"
         style={{
-          background: 'radial-gradient(circle, rgba(230,57,70,0.03) 0%, transparent 60%)'
+          background: 'radial-gradient(circle, rgba(0,255,65,0.03) 0%, transparent 60%)'
         }}
       />
 
@@ -37,7 +31,7 @@ export function Hero() {
         {/* Role badge */}
         <div className="inline-flex items-center gap-2 px-3 py-1 mb-6 rounded-md bg-elevated border border-border">
           <span className="w-1.5 h-1.5 rounded-full bg-accent" />
-          <span className="font-mono text-[13px] text-muted">First-year Cybersecurity Student</span>
+          <span className="font-mono text-[13px] text-muted">Cybersecurity Student</span>
         </div>
 
         {/* Name */}
@@ -45,20 +39,31 @@ export function Hero() {
           Cristobal Maier
         </h1>
 
-        {/* Tagline */}
-        <div className="mb-12">
-          <h2 className="text-[20px] sm:text-[24px] font-normal text-secondary max-w-2xl mx-auto flex items-center justify-center gap-[1px]">
-            <span>Mapping attack surfaces and documenting the findings.</span>
-            <span className="inline-block w-[10px] h-[24px] bg-accent cursor-blink ml-1 translate-y-[2px]" />
-          </h2>
+        {/* Terminal-style description */}
+        <div className="mb-12 max-w-xl mx-auto">
+          <div className="font-mono text-[14px] sm:text-[16px] text-secondary space-y-1 text-left inline-block">
+            <div className="flex items-center gap-2">
+              <span className="text-accent">{">"}</span>
+              <span>Mapping attack surfaces</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="text-accent">{">"}</span>
+              <span>Breaking weak assumptions</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="text-accent">{">"}</span>
+              <span>Documenting how systems fail</span>
+              <span className="inline-block w-[10px] h-[20px] bg-accent cursor-blink ml-1" />
+            </div>
+          </div>
         </div>
 
         {/* CTAs */}
         <div className="flex items-center justify-center gap-4 mb-14">
-          <Button asChild className="h-10 px-6 rounded-[6px] bg-accent hover:bg-accent-dim text-primary font-medium border-0 transition-colors">
+          <Button asChild className="h-10 px-6 rounded-[6px] bg-accent hover:bg-accent-dim text-base font-medium border-0 transition-colors">
             <a href="#projects">View Projects</a>
           </Button>
-          <Button asChild variant="outline" className="h-10 px-6 rounded-[6px] bg-transparent border-border text-secondary hover:border-accent hover:bg-accent/5 hover:text-primary transition-colors">
+          <Button asChild variant="outline" className="h-10 px-6 rounded-[6px] bg-transparent border-border text-secondary hover:border-accent hover:bg-accent-glow hover:text-primary transition-colors">
             <a href="#contact">Get in Touch</a>
           </Button>
         </div>
@@ -77,9 +82,9 @@ export function Hero() {
         {/* Stats */}
         <div className="grid grid-cols-3 gap-6 max-w-2xl mx-auto py-8 border-t border-border">
           {[
-            { label: "· Machines Rooted", value: "10" },
-            { label: "· Very Easy", value: "8" },
-            { label: "· Easy", value: "2" },
+            { label: "Machines Rooted", value: "10" },
+            { label: "Very Easy", value: "8" },
+            { label: "Easy", value: "2" },
           ].map((stat) => (
             <div key={stat.label} className="flex flex-col items-center">
               <div className="text-[28px] font-bold text-primary mb-1">

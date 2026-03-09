@@ -7,20 +7,18 @@ import { Button } from "@/components/ui/button";
 const navLinks = [
   { href: "#about", label: "About" },
   { href: "#skills", label: "Skills" },
+  { href: "#labs", label: "Labs" },
   { href: "#projects", label: "Projects" },
+  { href: "#learning", label: "Learning" },
   { href: "#contact", label: "Contact" },
 ];
 
 function NavLink({ href, label, onClick }: { href: string; label: string; onClick?: () => void }) {
-  const [hovered, setHovered] = useState(false);
   return (
     <a
       href={href}
       onClick={onClick}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      style={{ color: hovered ? "#e63946" : undefined }}
-      className="px-3 py-1.5 text-[14px] font-medium text-secondary transition-colors"
+      className="px-3 py-1.5 text-[14px] font-medium text-secondary transition-colors hover:text-accent"
     >
       {label}
     </a>
@@ -50,7 +48,7 @@ export function Navbar() {
         <div className="flex items-center justify-between h-14">
           {/* Logo */}
           <a href="#" className="flex items-center">
-            <span className="font-mono text-primary text-[14px]">cmaier.sec</span>
+            <span className="font-mono text-primary text-[14px]">cmaier<span className="text-accent">.sec</span></span>
           </a>
 
           {/* Desktop Navigation */}
@@ -62,8 +60,8 @@ export function Navbar() {
 
           {/* Status Badge */}
           <div className="hidden md:flex items-center">
-            <span className="flex items-center gap-2 font-mono text-[12px] text-green bg-green/10 border border-green/20 px-3 py-1 rounded-full">
-              <span className="w-1.5 h-1.5 rounded-full bg-green status-pulse" />
+            <span className="flex items-center gap-2 font-mono text-[12px] text-accent bg-accent/10 border border-accent/20 px-3 py-1 rounded-full">
+              <span className="w-1.5 h-1.5 rounded-full bg-accent status-pulse" />
               Available
             </span>
           </div>
@@ -92,8 +90,8 @@ export function Navbar() {
                 />
               ))}
               <div className="mt-3 px-3 flex items-center">
-                <span className="flex items-center gap-2 font-mono text-[12px] text-green bg-green/10 border border-green/20 px-3 py-1 rounded-full">
-                  <span className="w-1.5 h-1.5 rounded-full bg-green status-pulse" />
+                <span className="flex items-center gap-2 font-mono text-[12px] text-accent bg-accent/10 border border-accent/20 px-3 py-1 rounded-full">
+                  <span className="w-1.5 h-1.5 rounded-full bg-accent status-pulse" />
                   Available
                 </span>
               </div>
