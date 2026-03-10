@@ -1,6 +1,8 @@
-import { Globe, Terminal, Network, Database, Shield, FileCode2, Cpu, LayoutTemplate, GitBranch } from "lucide-react";
+"use client";
 
-type SkillType = {
+import { Globe, Terminal, Network, Database, Shield, FileCode2, Cpu, LayoutTemplate, GitBranch } from "lucide-react";
+import { useDecodeText } from "@/hooks/use-decode-text";
+import { useScanLines } from "@/hooks/use-scan-lines"; type SkillType = {
   icon: any;
   title: string;
   description: string;
@@ -50,22 +52,22 @@ const development = [
   {
     icon: FileCode2,
     title: "Python",
-    description: "Intermediate level. OOP, file I/O, API consumption, and socket programming applied to security tooling.",
-    tools: ["Python", "OOP", "Sockets", "APIs"],
+    description: "Writing scripts and building small tools to automate reconnaissance tasks and extend existing functionality.",
+    tools: ["Scripting", "Tooling"],
     filename: "python.sh"
   },
   {
     icon: Cpu,
     title: "Systems Programming",
     description: "Low-level programming fundamentals including memory management, pointers, and data structures.",
-    tools: ["C", "C++"],
+    tools: ["C++"],
     filename: "systems_programming.sh"
   },
   {
     icon: LayoutTemplate,
     title: "Web Development",
     description: "Frontend and backend fundamentals applied in full-stack academic projects.",
-    tools: ["JavaScript", "Node.js", "Express", "EJS"],
+    tools: ["HTML", "CSS", "JavaScript", "Node.js", "Express", "EJS", "MySQL"],
     filename: "web_development.sh"
   },
   {
@@ -78,8 +80,11 @@ const development = [
 ];
 
 export function Skills() {
+  const { displayText: titleText, elementRef: titleRef } = useDecodeText("Skills");
+  const { elementRef: scanRef } = useScanLines();
+
   const SkillCard = ({ skill }: { skill: SkillType }) => (
-    <div className="bg-surface border border-border rounded-[4px] p-6 transition-all duration-200 hover:border-accent/30 group flex flex-col h-full">
+    <div className="bg-surface border border-border rounded-[4px] p-6 transition-all duration-200 hover:border-accent/30 group flex flex-col h-full hover-pulse-border">
       {/* Filename */}
       <div className="mb-4">
         <span className="font-mono text-[11px] text-muted">
@@ -118,8 +123,8 @@ export function Skills() {
 
         {/* Section header */}
         <div className="mb-10">
-          <p className="terminal-label mb-2">$ cat skills.json</p>
-          <h2 className="text-[clamp(28px,4vw,52px)] font-bold text-primary">Skills</h2>
+          <p ref={scanRef as any} className="terminal-label mb-2 scan-in">$ cat skills.json</p>
+          <h2 ref={titleRef as any} className="text-[clamp(28px,4vw,52px)] font-bold text-primary">{titleText}</h2>
         </div>
 
         {/* Block 1: Offensive Security */}

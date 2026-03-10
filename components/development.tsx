@@ -1,6 +1,8 @@
-import { Github, FileCode2 } from "lucide-react";
+"use client";
 
-const projects = [
+import { Github, FileCode2 } from "lucide-react";
+import { useDecodeText } from "@/hooks/use-decode-text";
+import { useScanLines } from "@/hooks/use-scan-lines"; const projects = [
     {
         title: "Auka-Tech | Internal Communications Platform",
         description:
@@ -16,14 +18,17 @@ const projects = [
 ];
 
 export function Development() {
+    const { displayText: titleText, elementRef: titleRef } = useDecodeText("Development");
+    const { elementRef: scanRef } = useScanLines();
+
     return (
         <section id="development" className="py-[70px]">
             <div className="max-w-[1100px] mx-auto px-6">
 
                 {/* Section header */}
                 <div className="mb-10">
-                    <p className="terminal-label mb-2">$ ls ./development</p>
-                    <h2 className="text-[clamp(28px,4vw,52px)] font-bold text-primary">Development</h2>
+                    <p ref={scanRef as any} className="terminal-label mb-2 scan-in">$ ls ./development</p>
+                    <h2 ref={titleRef as any} className="text-[clamp(28px,4vw,52px)] font-bold text-primary">{titleText}</h2>
                     <p className="text-[15px] text-secondary mt-3">Software projects from my background as a technical programming student.</p>
                 </div>
 
@@ -32,7 +37,7 @@ export function Development() {
                     {projects.map((project) => (
                         <div
                             key={project.title}
-                            className="bg-surface border border-border border-l-2 border-l-accent rounded-[4px] flex flex-col transition-all duration-200 hover:border-accent/30"
+                            className="bg-surface border border-border border-l-2 border-l-accent rounded-[4px] flex flex-col transition-all duration-200 hover:border-accent/30 hover-pulse-border"
                         >
                             {/* Card header */}
                             <div className="flex items-center gap-3 px-6 py-3 border-b border-border">

@@ -2,6 +2,8 @@
 
 import { useForm, ValidationError } from "@formspree/react";
 import { Mail, Github, Linkedin, Send } from "lucide-react";
+import { useDecodeText } from "@/hooks/use-decode-text";
+import { useScanLines } from "@/hooks/use-scan-lines";
 
 const contacts = [
   { icon: Mail, label: "Email", value: "cristobalmaier1@gmail.com", href: "#contact" },
@@ -16,14 +18,17 @@ const availability = [
 ];
 
 export function Contact() {
+  const { displayText: titleText, elementRef: titleRef } = useDecodeText("Contact");
+  const { elementRef: scanRef } = useScanLines();
+
   return (
     <section id="contact" className="py-[70px]">
       <div className="max-w-[1100px] mx-auto px-6">
 
         {/* Section header */}
         <div className="mb-10">
-          <p className="terminal-label mb-2">&gt; initialize_connection</p>
-          <h2 className="text-[clamp(28px,4vw,52px)] font-bold text-primary mb-3">Contact</h2>
+          <p ref={scanRef as any} className="terminal-label mb-2 scan-in">&gt; initialize_connection</p>
+          <h2 ref={titleRef as any} className="text-[clamp(28px,4vw,52px)] font-bold text-primary mb-3">{titleText}</h2>
           <p className="text-[15px] text-secondary max-w-lg leading-[1.75]">
             Interested in discussing security research, collaboration, or potential roles?
           </p>
@@ -119,14 +124,17 @@ function ContactForm() {
         <label htmlFor="email" className="font-mono text-xs text-secondary pl-1 block">
           &gt; target_email
         </label>
-        <input
-          id="email"
-          type="email"
-          name="email"
-          placeholder="your@email.com"
-          required
-          className="w-full bg-base border border-border rounded p-3 text-sm text-primary font-mono focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent/20 transition-all placeholder:text-muted"
-        />
+        <div className="relative">
+          <input
+            id="email"
+            type="email"
+            name="email"
+            placeholder="your@email.com"
+            required
+            className="w-full bg-base border border-border rounded p-3 text-sm text-primary font-mono focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent/20 transition-all placeholder:text-muted input-focus-accent group peer"
+          />
+          <span className="absolute right-3 top-3.5 w-1.5 h-4 bg-accent cursor-blink opacity-0 peer-focus:opacity-100 transition-opacity pointer-events-none" />
+        </div>
         <ValidationError
           prefix="Email"
           field="email"
@@ -139,14 +147,16 @@ function ContactForm() {
         <label htmlFor="message" className="font-mono text-xs text-secondary pl-1 block">
           &gt; encrypted_payload
         </label>
-        <textarea
-          id="message"
-          name="message"
-          placeholder="Enter your message here..."
-          required
-          rows={5}
-          className="w-full bg-base border border-border rounded p-3 text-sm text-primary font-mono focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent/20 transition-all resize-none placeholder:text-muted h-full min-h-[120px]"
-        />
+        <div className="relative h-[120px]">
+          <textarea
+            id="message"
+            name="message"
+            placeholder="Enter your message here..."
+            required
+            className="w-full bg-base border border-border rounded p-3 text-sm text-primary font-mono focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent/20 transition-all resize-none placeholder:text-muted h-full peer input-focus-accent"
+          />
+          <span className="absolute right-3 top-3.5 w-1.5 h-4 bg-accent cursor-blink opacity-0 peer-focus:opacity-100 transition-opacity pointer-events-none" />
+        </div>
         <ValidationError
           prefix="Message"
           field="message"

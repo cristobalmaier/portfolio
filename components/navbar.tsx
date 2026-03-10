@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useScrambleText } from "@/hooks/use-scramble-text";
 
 const navLinks = [
   { href: "#about", label: "About" },
@@ -41,15 +42,19 @@ export function Navbar() {
 
         {/* Center: Desktop Nav */}
         <div className="hidden md:flex flex-1 justify-center items-center gap-1">
-          {navLinks.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              className="px-3 py-1.5 text-[13px] font-mono text-secondary hover-accent transition-colors"
-            >
-              {link.label}
-            </a>
-          ))}
+          {navLinks.map((link) => {
+            const { displayText, scramble } = useScrambleText(link.label);
+            return (
+              <a
+                key={link.label}
+                href={link.href}
+                onMouseEnter={scramble}
+                className="px-3 py-1.5 text-[13px] font-mono text-secondary hover-accent transition-colors w-[100px] text-center"
+              >
+                {displayText}
+              </a>
+            );
+          })}
         </div>
 
         {/* Right: Status / Mobile Toggle */}
@@ -79,16 +84,20 @@ export function Navbar() {
       >
         <nav className="py-3 border-t border-border bg-surface">
           <div className="px-6 flex flex-col pt-2 pb-4">
-            {navLinks.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                onClick={() => setIsOpen(false)}
-                className="py-3 text-[14px] font-mono text-secondary hover-accent transition-colors border-b border-border-subtle last:border-0"
-              >
-                {link.label}
-              </a>
-            ))}
+            {navLinks.map((link) => {
+              const { displayText, scramble } = useScrambleText(link.label);
+              return (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  onClick={() => setIsOpen(false)}
+                  onMouseEnter={scramble}
+                  className="py-3 text-[14px] font-mono text-secondary hover-accent transition-colors border-b border-border-subtle last:border-0"
+                >
+                  {displayText}
+                </a>
+              );
+            })}
 
             <div className="pt-4 mt-2 border-t border-border flex items-center gap-2">
               <span className="flex items-center gap-2 font-mono text-[12px] text-accent">

@@ -190,6 +190,118 @@
   }
 }
 
+/* ── Hacker Animations (prefers-reduced-motion respected) ── */
+@media (prefers-reduced-motion: no-preference) {
+
+  /* Glitch Effect */
+  .glitch-anim {
+    animation: glitch 400ms linear;
+  }
+
+  @keyframes glitch {
+    0% {
+      clip-path: inset(10% 0 80% 0);
+      transform: translate(0, 0) skewX(0);
+      color: var(--text-primary);
+    }
+
+    10% {
+      clip-path: inset(50% 0 10% 0);
+      transform: translate(-1px, 0) skewX(2deg);
+      color: var(--accent-red);
+    }
+
+    20% {
+      clip-path: inset(20% 0 60% 0);
+      transform: translate(2px, 0) skewX(-2deg);
+      color: var(--text-primary);
+    }
+
+    30% {
+      clip-path: inset(80% 0 5% 0);
+      transform: translate(-1px, 0) skewX(1deg);
+      color: var(--accent-red);
+    }
+
+    40% {
+      clip-path: inset(40% 0 30% 0);
+      transform: translate(1px, 0) skewX(-1deg);
+      color: var(--text-primary);
+    }
+
+    100% {
+      clip-path: inset(0 0 0 0);
+      transform: translate(0, 0) skewX(0);
+      color: var(--text-primary);
+    }
+  }
+
+  /* Hover Pulse */
+  .hover-pulse-border {
+    transition: box-shadow 1s ease-in-out, border-color 150ms ease;
+  }
+
+  .hover-pulse-border:hover {
+    box-shadow: 0 0 10px 2px var(--accent-red-dim);
+    border-color: var(--accent-red);
+  }
+
+  /* Fade Sequence Utilities */
+  .animate-fade-in-up {
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 400ms ease, transform 400ms ease;
+  }
+
+  .animate-fade-in-up.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .delay-150 {
+    transition-delay: 150ms;
+  }
+
+  .delay-300 {
+    transition-delay: 300ms;
+  }
+
+  .delay-450 {
+    transition-delay: 450ms;
+  }
+
+  .delay-600 {
+    transition-delay: 600ms;
+  }
+
+  .delay-750 {
+    transition-delay: 750ms;
+  }
+
+  .delay-900 {
+    transition-delay: 900ms;
+  }
+
+  /* Scan In line */
+  .scan-in {
+    opacity: 0;
+    clip-path: inset(0 100% 0 0);
+    transition: clip-path 400ms ease, opacity 100ms ease;
+  }
+
+  .scan-in.is-visible {
+    opacity: 1;
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+/* ── Form Inputs Focus Fix ── */
+.input-focus-accent:focus {
+  outline: none;
+  border-color: var(--accent-red);
+  box-shadow: 0 0 0 1px var(--accent-red-dim);
+}
+
 /* ── Terminal section label style ── */
 .terminal-label {
   font-family: 'JetBrains Mono', monospace;

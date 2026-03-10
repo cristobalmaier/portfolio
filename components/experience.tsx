@@ -1,3 +1,8 @@
+"use client";
+
+import { useDecodeText } from "@/hooks/use-decode-text";
+import { useScanLines } from "@/hooks/use-scan-lines";
+
 const experience = [
     {
         company: "Siemens Energy",
@@ -15,14 +20,17 @@ const experience = [
 ];
 
 export function Experience() {
+    const { displayText: titleText, elementRef: titleRef } = useDecodeText("Experience");
+    const { elementRef: scanRef } = useScanLines();
+
     return (
         <section id="experience" className="py-[70px]">
             <div className="max-w-[1100px] mx-auto px-6">
 
                 {/* Section header */}
                 <div className="mb-10">
-                    <p className="terminal-label mb-2">$ cat experience.log</p>
-                    <h2 className="text-[clamp(28px,4vw,52px)] font-bold text-primary">Experience</h2>
+                    <p ref={scanRef as any} className="terminal-label mb-2 scan-in">$ cat experience.log</p>
+                    <h2 ref={titleRef as any} className="text-[clamp(28px,4vw,52px)] font-bold text-primary">{titleText}</h2>
                 </div>
 
                 <div className="flex flex-col gap-4">
