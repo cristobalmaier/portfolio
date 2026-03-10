@@ -123,7 +123,7 @@ function ContactForm() {
           id="email"
           type="email"
           name="email"
-          placeholder="hacker@example.com"
+          placeholder="your@email.com"
           required
           className="w-full bg-base border border-border rounded p-3 text-sm text-primary font-mono focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent/20 transition-all placeholder:text-muted"
         />
@@ -160,7 +160,7 @@ function ContactForm() {
         disabled={state.submitting}
         className="mt-auto group flex items-center justify-center gap-2 w-full h-11 bg-accent/10 border border-accent/20 text-accent font-mono text-sm rounded hover:bg-accent/20 hover:border-accent/40 transition-all disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
       >
-        <Send className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+        <Send className="w-4 h-4" />
         <span>{state.submitting ? "transmitting..." : "execute_payload"}</span>
       </button>
     </form>

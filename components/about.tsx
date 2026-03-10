@@ -1,10 +1,10 @@
-import { MapPin, GraduationCap, Target, Briefcase } from "lucide-react";
+import { MapPin, GraduationCap, Crosshair, CircleDot } from "lucide-react";
 
 const infoItems = [
-  { icon: MapPin, label: "location", value: "Buenos Aires, Argentina" },
-  { icon: GraduationCap, label: "education", value: "Cybersecurity Student" },
-  { icon: Target, label: "focus", value: "Penetration Testing" },
-  { icon: Briefcase, label: "status", value: "Open to Internships" },
+  { icon: MapPin, label: "Location", value: "Buenos Aires, Argentina" },
+  { icon: GraduationCap, label: "Education", value: ["Cybersecurity Student", "Technical Degree in Programming"] },
+  { icon: Crosshair, label: "Focus", value: "Penetration Testing" },
+  { icon: CircleDot, label: "Status", value: "Open to Internships" },
 ];
 
 export function About() {
@@ -42,20 +42,24 @@ export function About() {
           <div className="space-y-4">
             <div className="grid grid-cols-2 gap-3">
               {infoItems.map((item) => (
-                <div key={item.label} className="bg-surface border border-border rounded-[4px] p-4 flex flex-col gap-1.5">
-                  <span className="font-mono text-[11px] text-muted">{item.label}</span>
-                  <span className="text-[14px] font-medium text-primary">{item.value}</span>
+                <div key={item.label} className="bg-elevated border border-border rounded-[4px] p-4 flex flex-col gap-1.5">
+                  <div className="flex items-center gap-2 mb-0.5">
+                    <item.icon className="w-3.5 h-3.5 text-muted" />
+                    <span className="font-mono text-[11px] text-muted uppercase tracking-[0.08em]">{item.label}</span>
+                  </div>
+                  {Array.isArray(item.value) ? (
+                    <div className="flex flex-col gap-[2px]">
+                      {item.value.map((v, i) => (
+                        <span key={i} className={`font-sans text-[14px] leading-tight ${i === 0 ? "font-medium text-primary" : "text-secondary"}`}>{v}</span>
+                      ))}
+                    </div>
+                  ) : (
+                    <span className="font-sans text-[14px] font-medium text-primary">{item.value}</span>
+                  )}
                 </div>
               ))}
             </div>
 
-            {/* Terminal note */}
-            <div className="bg-surface border border-border rounded-[4px] p-5 font-mono text-[13px]">
-              <p className="text-muted mb-1">$ uptime</p>
-              <p className="text-secondary">first year <span className="text-accent">cybersecurity student</span></p>
-              <p className="text-muted mt-3 mb-1">$ whoami</p>
-              <p className="text-secondary">cristobalmaier@bsas</p>
-            </div>
           </div>
 
         </div>

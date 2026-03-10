@@ -14,7 +14,7 @@ export function Hero() {
         {/* Role badge */}
         <div className="inline-flex items-center gap-2 px-3 py-1 mb-8 rounded-[4px] bg-surface border border-border">
           <span className="w-1.5 h-1.5 rounded-full bg-accent status-pulse" />
-          <span className="font-mono text-[12px] text-muted">Offensive Security Student</span>
+          <span className="font-mono text-[12px] text-secondary">Offensive Security Student</span>
         </div>
 
         {/* Name */}

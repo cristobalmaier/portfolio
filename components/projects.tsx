@@ -12,16 +12,6 @@ const projects = [
     status: "Active",
   },
   {
-    title: "CTF Writeups",
-    description:
-      "Structured notes documenting the attack chain for each DockerLabs machine: reconnaissance, enumeration, exploitation, and privilege escalation. A living methodology reference, not a solution dump.",
-    tags: ["DockerLabs", "Methodology", "Documentation"],
-    icon: Lock,
-    github: "https://github.com/cristobalmaier/pentesting-labs",
-    buttonText: "View Writeups",
-    status: "Active",
-  },
-  {
     title: "DIRSCOPE — Directory Fuzzer",
     description:
       "Directory and web file fuzzer written in pure Python. Discovers hidden paths on HTTP/HTTPS servers using a wordlist, similar to ffuf or dirbuster. Handles concurrent scanning, status code colorization, and redirect resolution.",
@@ -29,6 +19,16 @@ const projects = [
     icon: Terminal,
     github: "https://github.com/cristobalmaier/dirscope",
     buttonText: "View Source",
+    status: "Active",
+  },
+  {
+    title: "CTF Writeups",
+    description:
+      "Structured notes documenting the attack chain for each DockerLabs machine: reconnaissance, enumeration, exploitation, and privilege escalation. A living methodology reference, not a solution dump.",
+    tags: ["DockerLabs", "Methodology", "Documentation"],
+    icon: Lock,
+    github: "https://github.com/cristobalmaier/pentesting-labs",
+    buttonText: "View Writeups",
     status: "Active",
   },
 ];

@@ -59,6 +59,11 @@
     border-color: var(--border);
   }
 
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+  }
+
   body {
     background-color: var(--bg-base);
     background-image: radial-gradient(#1c1c1c 1px, transparent 0) !important;
