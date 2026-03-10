@@ -41,7 +41,7 @@ const skills = [
 
 export function Skills() {
   return (
-    <section id="toolkit" className="py-[70px] bg-base">
+    <section id="toolkit" className="py-[70px]">
       <div className="max-w-[1100px] mx-auto px-6">
 
         {/* Section header */}

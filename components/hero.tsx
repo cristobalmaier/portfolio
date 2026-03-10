@@ -1,8 +1,8 @@
-import { Mail, Github, Linkedin } from "lucide-react";
+import { Mail, Github, Linkedin, FileText } from "lucide-react";
 
 export function Hero() {
   return (
-    <section className="relative flex items-center justify-center pt-24 pb-12 overflow-hidden bg-base">
+    <section className="relative flex items-center justify-center pt-24 pb-12 overflow-hidden">
       {/* Faint red radial glow for offsec aesthetic */}
       <div
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full pointer-events-none"
@@ -57,24 +57,37 @@ export function Hero() {
           </a>
         </div>
 
-        {/* Social links */}
+        {/* Social links & CV */}
         <div className="flex items-center justify-center gap-6">
-          {[
-            { icon: Mail, href: "mailto:cristobalmaier1@gmail.com", label: "Email" },
-            { icon: Github, href: "https://github.com/cristobalmaier", label: "GitHub" },
-            { icon: Linkedin, href: "https://www.linkedin.com/in/cristobal-maier/", label: "LinkedIn" },
-          ].map((item) => (
+          <div className="flex gap-4">
+            {[
+              { icon: Mail, href: "#contact", label: "Email" },
+              { icon: Github, href: "https://github.com/cristobalmaier", label: "GitHub" },
+              { icon: Linkedin, href: "https://www.linkedin.com/in/cristobal-maier/", label: "LinkedIn" },
+            ].map((item) => (
+              <a
+                key={item.label}
+                href={item.href}
+                target={item.label !== "Email" ? "_blank" : undefined}
+                rel={item.label !== "Email" ? "noopener noreferrer" : undefined}
+                className="p-3 bg-surface border border-border rounded-[4px] text-muted hover-accent-border transition-all flex items-center justify-center"
+                aria-label={item.label}
+              >
+                <item.icon className="w-5 h-5" />
+              </a>
+            ))}
+
+            {/* CV Download Button */}
             <a
-              key={item.label}
-              href={item.href}
-              target={item.label !== "Email" ? "_blank" : undefined}
-              rel={item.label !== "Email" ? "noopener noreferrer" : undefined}
-              className="p-3 bg-surface border border-border rounded-[4px] text-muted hover-accent-border transition-all"
-              aria-label={item.label}
+              href="/cv.pdf"
+              download
+              className="px-4 py-3 bg-surface border border-border rounded-[4px] text-muted hover-accent-border transition-all flex items-center gap-2 font-mono text-[13px]"
+              aria-label="Download CV"
             >
-              <item.icon className="w-5 h-5" />
+              <FileText className="w-5 h-5" />
+              <span>resume.pdf</span>
             </a>
-          ))}
+          </div>
         </div>
 
       </div>

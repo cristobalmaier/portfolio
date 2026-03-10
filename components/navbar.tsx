@@ -5,10 +5,10 @@ import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const navLinks = [
+  { href: "#about", label: "About Me" },
   { href: "#experience", label: "Experience" },
   { href: "#projects", label: "Projects" },
   { href: "#toolkit", label: "Toolkit" },
-  { href: "#methodology", label: "Methodology" },
   { href: "#contact", label: "Contact" },
 ];
 
@@ -29,17 +29,17 @@ export function Navbar() {
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled ? "bg-base/80 backdrop-blur-md border-b border-border" : "bg-transparent"
         }`}
     >
-      <div className="max-w-[1100px] mx-auto px-6 h-20 flex md:grid md:grid-cols-3 items-center justify-between md:justify-items-center">
+      <div className="max-w-[1400px] w-full mx-auto px-6 h-20 flex items-center justify-between">
 
         {/* Left: Logo */}
-        <div className="flex justify-start w-full md:w-auto md:justify-self-start">
+        <div className="flex-1 flex justify-start">
           <a href="#" className="font-mono text-accent text-[15px] font-bold tracking-tight">
             Offensive Security<span className="animate-pulse">_</span>
           </a>
         </div>
 
         {/* Center: Desktop Nav */}
-        <div className="hidden md:flex items-center gap-1 justify-self-center">
+        <div className="hidden md:flex flex-1 justify-center items-center gap-1">
           {navLinks.map((link) => (
             <a
               key={link.label}
@@ -52,7 +52,7 @@ export function Navbar() {
         </div>
 
         {/* Right: Status / Mobile Toggle */}
-        <div className="flex justify-end w-full md:w-auto md:justify-self-end">
+        <div className="flex-1 flex justify-end">
           <div className="hidden md:flex items-center">
             <span className="flex items-center gap-2 font-mono text-[11px] text-accent border border-accent/20 bg-accent/5 px-3 py-1 rounded-[3px]">
               <span className="w-1.5 h-1.5 rounded-full bg-accent status-pulse"></span>

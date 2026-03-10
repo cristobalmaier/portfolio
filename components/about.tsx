@@ -9,13 +9,13 @@ const infoItems = [
 
 export function About() {
   return (
-    <section id="methodology" className="py-[70px] bg-base">
+    <section id="about" className="py-[70px]">
       <div className="max-w-[1100px] mx-auto px-6">
 
         {/* Section header */}
         <div className="mb-10">
-          <p className="terminal-label mb-2">&gt; cat methodology.md</p>
-          <h2 className="text-[clamp(28px,4vw,52px)] font-bold text-primary">Methodology</h2>
+          <p className="terminal-label mb-2">&gt; cat about_me.md</p>
+          <h2 className="text-[clamp(28px,4vw,52px)] font-bold text-primary">About Me</h2>
         </div>
 
         <div className="grid md:grid-cols-2 gap-6 items-start">
@@ -52,9 +52,9 @@ export function About() {
             {/* Terminal note */}
             <div className="bg-surface border border-border rounded-[4px] p-5 font-mono text-[13px]">
               <p className="text-muted mb-1">$ uptime</p>
-              <p className="text-secondary">learning offensive security for <span className="text-accent">1 year</span></p>
+              <p className="text-secondary">first year <span className="text-accent">cybersecurity student</span></p>
               <p className="text-muted mt-3 mb-1">$ whoami</p>
-              <p className="text-secondary">cybersecurity-student@bsas</p>
+              <p className="text-secondary">cristobalmaier@bsas</p>
             </div>
           </div>
 
