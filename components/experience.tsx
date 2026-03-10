@@ -9,6 +9,7 @@ const experience = [
             "Prepared and configured Windows 10/11 systems, corporate software, and Microsoft 365, ensuring proper integration with company network and policies.",
             "Performed preventive and corrective hardware maintenance, identifying early failures and minimizing user downtime.",
             "Documented solutions and updated records in the ticketing system, enabling better issue tracking and collaboration across IT teams.",
+            "Exposure to enterprise network architecture and endpoint management informed a practical understanding of the attack surface that offensive security practitioners target."
         ],
     },
 ];

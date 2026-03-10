@@ -14,7 +14,7 @@ export function Hero() {
         {/* Role badge */}
         <div className="inline-flex items-center gap-2 px-3 py-1 mb-8 rounded-[4px] bg-surface border border-border">
           <span className="w-1.5 h-1.5 rounded-full bg-accent status-pulse" />
-          <span className="font-mono text-[12px] text-muted">junior offensive security practitioner</span>
+          <span className="font-mono text-[12px] text-muted">Offensive Security Student</span>
         </div>
 
         {/* Name */}
@@ -24,19 +24,11 @@ export function Hero() {
 
         {/* Terminal description block */}
         <div className="mb-12 inline-block text-left">
-          <div className="font-mono text-[15px] sm:text-[17px] text-secondary space-y-1">
+          <div className="font-mono text-[15px] sm:text-[17px] text-secondary">
             <div className="flex items-center gap-2">
               <span className="text-accent select-none">{">"}</span>
-              <span>Mapping attack surfaces</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <span className="text-accent select-none">{">"}</span>
-              <span>Breaking weak assumptions</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <span className="text-accent select-none">{">"}</span>
-              <span>Documenting how systems fail</span>
-              <span className="inline-block w-[9px] h-[18px] bg-accent cursor-blink ml-0.5 translate-y-[1px]" />
+              <span>First-year student. Real tools. Documented methodology.</span>
+              <span className="inline-block w-[3px] h-[18px] bg-accent cursor-blink ml-0.5 translate-y-[1px]" />
             </div>
           </div>
         </div>

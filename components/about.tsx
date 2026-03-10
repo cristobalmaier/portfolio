@@ -27,13 +27,13 @@ export function About() {
             </div>
             <div className="p-6 space-y-4">
               <p className="text-[15px] text-secondary leading-[1.8]">
-                I approach systems with a breaker&apos;s mindset. As a junior offensive security practitioner, my daily workflow consists of structured reconnaissance, vulnerability identification, and controlled exploitation in local lab environments.
+                I approach systems with a breaker&apos;s mindset. My focus is offensive security — understanding how infrastructure fails before someone with bad intentions finds out first.
               </p>
               <p className="text-[15px] text-secondary leading-[1.8]">
-                My methodology relies on terminal-native tools. I use <span className="font-mono text-primary">nmap</span> for mapping attack surfaces, <span className="font-mono text-primary">ffuf</span> for parameter discovery, and custom <span className="font-mono text-primary">Python</span> scripts to automate repetitive tasks and format intelligence.
+                My methodology is terminal-native. I use <span className="font-mono text-primary">nmap</span> for host discovery, <span className="font-mono text-primary">ffuf</span> for parameter enumeration, and custom <span className="font-mono text-primary">Python</span> scripts to automate recon and parse output. My background in software development means I don't just run tools — I build them when they don't exist or don't fit the task.
               </p>
               <p className="text-[15px] text-secondary leading-[1.8]">
-                Discipline over hacks. I document every finding, every dead end, and every successful exploit in detailed writeups to build a repeatable, reliable attack process.
+                Discipline over hacks. Every finding gets documented. Every dead end gets logged. The goal is a repeatable, reliable attack process — not a lucky shot.
               </p>
             </div>
           </div>
