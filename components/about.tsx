@@ -9,13 +9,13 @@ const infoItems = [
 
 export function About() {
   return (
-    <section id="about" className="py-[70px] bg-base">
+    <section id="methodology" className="py-[70px] bg-base">
       <div className="max-w-[1100px] mx-auto px-6">
 
         {/* Section header */}
         <div className="mb-10">
-          <p className="terminal-label mb-2">&gt; about</p>
-          <h2 className="text-[clamp(28px,4vw,52px)] font-bold text-primary">About</h2>
+          <p className="terminal-label mb-2">&gt; cat methodology.md</p>
+          <h2 className="text-[clamp(28px,4vw,52px)] font-bold text-primary">Methodology</h2>
         </div>
 
         <div className="grid md:grid-cols-2 gap-6 items-start">
@@ -27,20 +27,13 @@ export function About() {
             </div>
             <div className="p-6 space-y-4">
               <p className="text-[15px] text-secondary leading-[1.8]">
-                I am a first-year cybersecurity student focused on offensive security.
-                I learn by doing — running a local lab with Kali Linux, rooting machines
-                on DockerLabs, and writing Python and Bash scripts to automate
-                reconnaissance tasks.
+                I approach systems with a breaker&apos;s mindset. As a junior offensive security practitioner, my daily workflow consists of structured reconnaissance, vulnerability identification, and controlled exploitation in local lab environments.
               </p>
               <p className="text-[15px] text-secondary leading-[1.8]">
-                My methodology is terminal-native. I use <span className="font-mono text-primary">nmap</span>,{" "}
-                <span className="font-mono text-primary">ffuf</span>, and{" "}
-                <span className="font-mono text-primary">curl</span> to analyze web logic and
-                network behavior, then document findings in structured writeups.
+                My methodology relies on terminal-native tools. I use <span className="font-mono text-primary">nmap</span> for mapping attack surfaces, <span className="font-mono text-primary">ffuf</span> for parameter discovery, and custom <span className="font-mono text-primary">Python</span> scripts to automate repetitive tasks and format intelligence.
               </p>
               <p className="text-[15px] text-secondary leading-[1.8]">
-                I am looking for a junior or internship role where I can continue
-                learning alongside experienced security professionals.
+                Discipline over hacks. I document every finding, every dead end, and every successful exploit in detailed writeups to build a repeatable, reliable attack process.
               </p>
             </div>
           </div>

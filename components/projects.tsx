@@ -21,6 +21,16 @@ const projects = [
     buttonText: "View Writeups",
     status: "Active",
   },
+  {
+    title: "DIRSCOPE — Directory Fuzzer",
+    description:
+      "Directory and web file fuzzer written in pure Python. Discovers hidden paths on HTTP/HTTPS servers using a wordlist, similar to ffuf or dirbuster. Handles concurrent scanning, status code colorization, and redirect resolution.",
+    tags: ["Python", "Fuzzing", "Reconnaissance", "Automation"],
+    icon: Terminal,
+    github: "https://github.com/cristobalmaier/dirscope",
+    buttonText: "View Source",
+    status: "Active",
+  },
 ];
 
 export function Projects() {
@@ -69,15 +79,17 @@ export function Projects() {
                 </div>
 
                 {/* Link */}
-                <a
-                  href={project.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 w-full h-10 bg-transparent border border-border font-mono text-[12px] text-secondary rounded-[4px] hover-accent-border"
-                >
-                  <Github className="w-4 h-4" />
-                  {project.buttonText}
-                </a>
+                <div className="mt-auto pt-2 border-border">
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-2 w-fit px-5 h-10 bg-transparent border border-border font-mono text-[12px] text-secondary rounded-[4px] hover-accent-border"
+                  >
+                    <Github className="w-4 h-4" />
+                    {project.buttonText}
+                  </a>
+                </div>
               </div>
             </div>
           ))}

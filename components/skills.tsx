@@ -41,13 +41,13 @@ const skills = [
 
 export function Skills() {
   return (
-    <section id="skills" className="py-[70px] bg-base">
+    <section id="toolkit" className="py-[70px] bg-base">
       <div className="max-w-[1100px] mx-auto px-6">
 
         {/* Section header */}
         <div className="mb-10">
-          <p className="terminal-label mb-2">$ skills --list</p>
-          <h2 className="text-[clamp(28px,4vw,52px)] font-bold text-primary">Skills</h2>
+          <p className="terminal-label mb-2">$ cat toolkit.json</p>
+          <h2 className="text-[clamp(28px,4vw,52px)] font-bold text-primary">Toolkit</h2>
         </div>
 
         {/* Grid */}

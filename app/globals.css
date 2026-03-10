@@ -5,22 +5,22 @@
 
 :root {
   /* Backgrounds */
-  --bg-base: #0a0a0a;
-  --bg-surface: #0f0f0f;
-  --bg-elevated: #141414;
+  --bg-base: #111111;
+  --bg-surface: #181818;
+  --bg-elevated: #1f1f1f;
 
   /* Borders */
-  --border: #1f1f1f;
-  --border-subtle: #181818;
+  --border: #2a2a2a;
+  --border-subtle: #1c1c1c;
 
   /* Text */
   --text-primary: #ffffff;
   --text-secondary: #a0a0a0;
   --text-muted: #4a4a4a;
 
-  /* Accents — terminal green only */
-  --accent-green: #00FF41;
-  --accent-green-dim: rgba(0, 255, 65, 0.12);
+  /* Accents — offensive red */
+  --accent-red: #ff3333;
+  --accent-red-dim: rgba(255, 51, 51, 0.12);
 
   --radius: 6px;
 }
@@ -40,9 +40,9 @@
   --color-secondary: var(--text-secondary);
   --color-muted: var(--text-muted);
 
-  /* Single accent — terminal green */
-  --color-accent: var(--accent-green);
-  --color-accent-dim: var(--accent-green-dim);
+  /* Accents */
+  --color-accent: var(--accent-red);
+  --color-accent-dim: var(--accent-red-dim);
 }
 
 @layer base {
@@ -61,6 +61,9 @@
 
   body {
     background-color: var(--bg-base);
+    background-image: radial-gradient(var(--border-subtle) 1px, transparent 0);
+    background-size: 24px 24px;
+    background-position: -11px -11px;
     color: var(--text-primary);
     font-family: 'Inter', system-ui, sans-serif;
   }
@@ -117,7 +120,7 @@
 }
 
 .text-accent {
-  color: var(--accent-green);
+  color: var(--accent-red);
 }
 
 .border-border {
@@ -134,7 +137,7 @@
 }
 
 .hover-accent:hover {
-  color: var(--accent-green);
+  color: var(--accent-red);
 }
 
 .hover-accent-border {
@@ -142,10 +145,12 @@
 }
 
 .hover-accent-border:hover {
-  border-color: var(--accent-green);
-  background-color: var(--accent-green-dim);
+  border-color: var(--accent-red);
+  background-color: var(--accent-red-dim);
   color: var(--text-primary);
 }
+
+
 
 /* ── Animations ── */
 .cursor-blink {
@@ -184,7 +189,7 @@
 .terminal-label {
   font-family: 'JetBrains Mono', monospace;
   font-size: 12px;
-  color: var(--accent-green);
+  color: var(--accent-red);
   letter-spacing: 0.05em;
 }
 

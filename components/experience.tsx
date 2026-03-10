@@ -34,7 +34,7 @@ export function Experience() {
                             <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1 mb-5">
                                 <div>
                                     <h3 className="text-[18px] font-bold text-primary">{entry.company}</h3>
-                                    <p className="text-[14px] font-medium text-secondary mt-0.5">{entry.role}</p>
+                                    <p className="text-[14px] font-mono text-accent mt-0.5">{entry.role}</p>
                                 </div>
                                 <div className="flex flex-col sm:items-end shrink-0">
                                     <span className="font-mono text-[12px] text-accent">{entry.dates}</span>

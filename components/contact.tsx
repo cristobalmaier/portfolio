@@ -20,7 +20,7 @@ export function Contact() {
         {/* Section header */}
         <div className="mb-10">
           <p className="terminal-label mb-2">&gt; initialize_connection</p>
-          <h2 className="text-[clamp(28px,4vw,52px)] font-bold text-primary mb-3">Network Request</h2>
+          <h2 className="text-[clamp(28px,4vw,52px)] font-bold text-primary mb-3">Contact</h2>
           <p className="text-[15px] text-secondary max-w-lg leading-[1.75]">
             Interested in discussing security research, collaboration, or potential roles?
           </p>
@@ -39,7 +39,7 @@ export function Contact() {
                 className={`flex items-center gap-4 p-4 border border-border ${index !== 0 ? "border-t-0" : ""
                   } bg-surface hover:bg-elevated hover-accent transition-colors group`}
               >
-                <contact.icon className="w-4 h-4 text-muted shrink-0" />
+                <contact.icon className="w-4 h-4 text-muted shrink-0 transition-colors group-hover:!text-[var(--accent-red)]" />
                 <div className="flex flex-col">
                   <span className="text-[13px] font-semibold text-primary">{contact.label}</span>
                   <span className="font-mono text-[12px] text-secondary">{contact.value}</span>
@@ -54,12 +54,12 @@ export function Contact() {
               <span className="font-mono text-[13px] text-primary">status.json</span>
               <div className="flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-accent status-pulse" />
-                <span className="font-mono text-[11px] text-accent">online</span>
+                <span className="font-mono text-[11px] text-accent font-medium">online</span>
               </div>
             </div>
 
-            <div className="p-6 flex-1 flex flex-col justify-between">
-              <ul className="space-y-3 mb-8">
+            <div className="p-6 flex-1 flex flex-col">
+              <ul className="space-y-3 mb-6 flex-1">
                 {availability.map((item) => (
                   <li key={item} className="flex items-start gap-3">
                     <span className="font-mono text-accent text-[13px] shrink-0 mt-[1px]">›</span>
@@ -68,13 +68,15 @@ export function Contact() {
                 ))}
               </ul>
 
-              <a
-                href="mailto:cristobalmaier1@gmail.com"
-                className="flex items-center justify-center gap-2 w-full h-10 bg-accent text-black font-mono text-[12px] font-semibold rounded-[4px] hover:bg-accent/90 transition-colors"
-              >
-                <Send className="w-4 h-4" />
-                transmit_message
-              </a>
+              <div className="mt-auto pt-2 border-border">
+                <a
+                  href="mailto:cristobalmaier1@gmail.com"
+                  className="inline-flex items-center justify-center gap-2 w-fit px-5 h-10 bg-transparent border border-border font-mono text-[12px] text-secondary rounded-[4px] hover-accent-border"
+                >
+                  <Send className="w-4 h-4" />
+                  <span>execute_payload</span>
+                </a>
+              </div>
             </div>
           </div>
 

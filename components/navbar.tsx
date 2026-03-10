@@ -5,11 +5,10 @@ import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const navLinks = [
-  { href: "#about", label: "About" },
-  { href: "#skills", label: "Skills" },
-  { href: "#labs", label: "Labs" },
-  { href: "#projects", label: "Projects" },
   { href: "#experience", label: "Experience" },
+  { href: "#projects", label: "Projects" },
+  { href: "#toolkit", label: "Toolkit" },
+  { href: "#methodology", label: "Methodology" },
   { href: "#contact", label: "Contact" },
 ];
 
@@ -18,80 +17,87 @@ export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20);
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "bg-surface border-b border-border" : "bg-transparent"
+    <nav
+      className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled ? "bg-base/80 backdrop-blur-md border-b border-border" : "bg-transparent"
         }`}
     >
-      <div className="max-w-[1100px] mx-auto px-6">
-        <div className="flex items-center justify-between h-14">
+      <div className="max-w-[1100px] mx-auto px-6 h-20 flex md:grid md:grid-cols-3 items-center justify-between md:justify-items-center">
 
-          {/* Logo */}
-          <a href="#" className="flex items-center">
-            <span className="font-mono text-[13px] text-accent">cmaier.sec</span>
+        {/* Left: Logo */}
+        <div className="flex justify-start w-full md:w-auto md:justify-self-start">
+          <a href="#" className="font-mono text-accent text-[15px] font-bold tracking-tight">
+            Offensive Security<span className="animate-pulse">_</span>
           </a>
+        </div>
 
-          {/* Desktop nav */}
-          <nav className="hidden md:flex items-center gap-1">
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="px-3 py-1.5 text-[13px] font-mono text-secondary hover-accent"
-              >
-                {link.label}
-              </a>
-            ))}
-          </nav>
+        {/* Center: Desktop Nav */}
+        <div className="hidden md:flex items-center gap-1 justify-self-center">
+          {navLinks.map((link) => (
+            <a
+              key={link.label}
+              href={link.href}
+              className="px-3 py-1.5 text-[13px] font-mono text-secondary hover-accent transition-colors"
+            >
+              {link.label}
+            </a>
+          ))}
+        </div>
 
-          {/* Status badge */}
+        {/* Right: Status / Mobile Toggle */}
+        <div className="flex justify-end w-full md:w-auto md:justify-self-end">
           <div className="hidden md:flex items-center">
-            <span className="flex items-center gap-2 font-mono text-[11px] text-accent border border-accent/20 bg-accent/5 px-3 py-1 rounded-full">
-              <span className="w-1.5 h-1.5 rounded-full bg-accent status-pulse" />
-              available
+            <span className="flex items-center gap-2 font-mono text-[11px] text-accent border border-accent/20 bg-accent/5 px-3 py-1 rounded-[3px]">
+              <span className="w-1.5 h-1.5 rounded-full bg-accent status-pulse"></span>
+              Available
             </span>
           </div>
-
           {/* Mobile toggle */}
           <Button
             variant="ghost"
             size="icon"
-            className="md:hidden h-8 w-8 text-secondary"
+            className="md:hidden h-8 w-8 text-secondary ml-4"
             onClick={() => setIsOpen(!isOpen)}
           >
             {isOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
           </Button>
         </div>
-
-        {/* Mobile menu */}
-        {isOpen && (
-          <nav className="md:hidden py-3 border-t border-border bg-surface">
-            <div className="flex flex-col gap-0.5">
-              {navLinks.map((link) => (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  onClick={() => setIsOpen(false)}
-                  className="px-3 py-2 text-[13px] font-mono text-secondary hover-accent"
-                >
-                  {link.label}
-                </a>
-              ))}
-              <div className="mt-3 px-3">
-                <span className="flex items-center gap-2 font-mono text-[11px] text-accent border border-accent/20 bg-accent/5 px-3 py-1 rounded-full w-fit">
-                  <span className="w-1.5 h-1.5 rounded-full bg-accent status-pulse" />
-                  available
-                </span>
-              </div>
-            </div>
-          </nav>
-        )}
       </div>
-    </header>
+
+      {/* Mobile Nav */}
+      <div
+        className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? "max-h-[400px] opacity-100" : "max-h-0 opacity-0"
+          }`}
+      >
+        <nav className="py-3 border-t border-border bg-surface">
+          <div className="px-6 flex flex-col pt-2 pb-4">
+            {navLinks.map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                onClick={() => setIsOpen(false)}
+                className="py-3 text-[14px] font-mono text-secondary hover-accent transition-colors border-b border-border-subtle last:border-0"
+              >
+                {link.label}
+              </a>
+            ))}
+
+            <div className="pt-4 mt-2 border-t border-border flex items-center gap-2">
+              <span className="flex items-center gap-2 font-mono text-[12px] text-accent">
+                <span className="w-2 h-2 rounded-full bg-accent status-pulse"></span>
+                Available
+              </span>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </nav>
   );
 }
