@@ -3,7 +3,6 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useScrambleText } from "@/hooks/use-scramble-text";
 
 const navLinks = [
   { href: "#about", label: "About" },
@@ -17,6 +16,7 @@ const navLinks = [
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState("");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -26,50 +26,69 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(`#${entry.target.id}`);
+          }
+        });
+      },
+      { rootMargin: "-50% 0px -50% 0px" }
+    );
+
+    navLinks.forEach((link) => {
+      const element = document.querySelector(link.href);
+      if (element) observer.observe(element);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <nav
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled ? "bg-base/80 backdrop-blur-md border-b border-border" : "bg-transparent"
-        }`}
+      className={`fixed top-0 w-full z-50 transition-all duration-200 ${
+        scrolled
+          ? "bg-surface border-b border-border"
+          : "bg-transparent"
+      }`}
     >
-      <div className="max-w-[1400px] w-full mx-auto px-6 h-20 flex items-center justify-between">
+      <div className="max-w-[1100px] w-full mx-auto px-6 h-16 flex items-center justify-between">
 
         {/* Left: Logo */}
-        <div className="flex-1 flex justify-start">
-          <a href="#" className="font-mono text-accent text-[15px] font-bold tracking-tight">
-            Offensive Security<span className="animate-pulse">_</span>
-          </a>
-        </div>
+        <a href="#" className="font-mono text-primary text-[14px] tracking-tight">
+          cmaier.sec
+        </a>
 
         {/* Center: Desktop Nav */}
-        <div className="hidden md:flex flex-1 justify-center items-center gap-1">
-          {navLinks.map((link) => {
-            const { displayText, scramble } = useScrambleText(link.label);
-            return (
-              <a
-                key={link.label}
-                href={link.href}
-                onMouseEnter={scramble}
-                className="px-3 py-1.5 text-[13px] font-mono text-secondary hover-accent transition-colors w-[100px] text-center"
-              >
-                {displayText}
-              </a>
-            );
-          })}
+        <div className="hidden md:flex items-center gap-1">
+          {navLinks.map((link) => (
+            <a
+              key={link.label}
+              href={link.href}
+              className={`px-3 py-1.5 text-[14px] font-sans font-medium transition-colors duration-200 ${
+                activeSection === link.href
+                  ? "text-accent"
+                  : "text-secondary hover:text-primary"
+              }`}
+            >
+              {link.label}
+            </a>
+          ))}
         </div>
 
         {/* Right: Status / Mobile Toggle */}
-        <div className="flex-1 flex justify-end">
-          <div className="hidden md:flex items-center">
-            <span className="flex items-center gap-2 font-mono text-[11px] text-accent border border-accent/20 bg-accent/5 px-3 py-1 rounded-[3px]">
-              <span className="w-1.5 h-1.5 rounded-full bg-accent status-pulse"></span>
-              Available
-            </span>
-          </div>
+        <div className="flex items-center gap-4">
+          <span className="hidden md:flex items-center gap-2 font-mono text-[11px] text-secondary">
+            <span className="w-1.5 h-1.5 rounded-full bg-green status-pulse"></span>
+            Available
+          </span>
           {/* Mobile toggle */}
           <Button
             variant="ghost"
             size="icon"
-            className="md:hidden h-8 w-8 text-secondary ml-4"
+            className="md:hidden h-8 w-8 text-secondary"
             onClick={() => setIsOpen(!isOpen)}
           >
             {isOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
@@ -79,29 +98,30 @@ export function Navbar() {
 
       {/* Mobile Nav */}
       <div
-        className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? "max-h-[400px] opacity-100" : "max-h-0 opacity-0"
-          }`}
+        className={`md:hidden overflow-hidden transition-all duration-200 ${
+          isOpen ? "max-h-[400px] opacity-100" : "max-h-0 opacity-0"
+        }`}
       >
         <nav className="py-3 border-t border-border bg-surface">
           <div className="px-6 flex flex-col pt-2 pb-4">
-            {navLinks.map((link) => {
-              const { displayText, scramble } = useScrambleText(link.label);
-              return (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  onClick={() => setIsOpen(false)}
-                  onMouseEnter={scramble}
-                  className="py-3 text-[14px] font-mono text-secondary hover-accent transition-colors border-b border-border-subtle last:border-0"
-                >
-                  {displayText}
-                </a>
-              );
-            })}
+            {navLinks.map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                onClick={() => setIsOpen(false)}
+                className={`py-3 text-[14px] font-sans font-medium transition-colors border-b border-border-subtle last:border-0 ${
+                  activeSection === link.href
+                    ? "text-accent"
+                    : "text-secondary hover:text-primary"
+                }`}
+              >
+                {link.label}
+              </a>
+            ))}
 
             <div className="pt-4 mt-2 border-t border-border flex items-center gap-2">
-              <span className="flex items-center gap-2 font-mono text-[12px] text-accent">
-                <span className="w-2 h-2 rounded-full bg-accent status-pulse"></span>
+              <span className="flex items-center gap-2 font-mono text-[11px] text-secondary">
+                <span className="w-1.5 h-1.5 rounded-full bg-green status-pulse"></span>
                 Available
               </span>
             </div>

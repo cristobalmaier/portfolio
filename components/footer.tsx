@@ -8,7 +8,7 @@ export function Footer() {
       <div className="max-w-[1100px] mx-auto px-6">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
 
-          <span className="font-mono text-[13px] text-accent">cmaier.sec</span>
+          <span className="font-mono text-[13px] text-primary">cmaier.sec</span>
 
           <div className="flex items-center gap-5">
             {[
@@ -21,7 +21,7 @@ export function Footer() {
                 href={item.href}
                 target={item.label !== "Email" ? "_blank" : undefined}
                 rel={item.label !== "Email" ? "noopener noreferrer" : undefined}
-                className="text-muted hover-accent"
+                className="text-muted hover:text-accent transition-colors duration-200"
                 aria-label={item.label}
               >
                 <item.icon className="w-[17px] h-[17px]" />

@@ -1,8 +1,5 @@
 "use client";
 
-import { useDecodeText } from "@/hooks/use-decode-text";
-import { useScanLines } from "@/hooks/use-scan-lines";
-
 const experience = [
     {
         company: "Siemens Energy",
@@ -20,43 +17,40 @@ const experience = [
 ];
 
 export function Experience() {
-    const { displayText: titleText, elementRef: titleRef } = useDecodeText("Experience");
-    const { elementRef: scanRef } = useScanLines();
-
     return (
-        <section id="experience" className="py-[70px]">
+        <section id="experience" className="py-[120px]">
             <div className="max-w-[1100px] mx-auto px-6">
 
                 {/* Section header */}
-                <div className="mb-10">
-                    <p ref={scanRef as any} className="terminal-label mb-2 scan-in">$ cat experience.log</p>
-                    <h2 ref={titleRef as any} className="text-[clamp(28px,4vw,52px)] font-bold text-primary">{titleText}</h2>
+                <div className="mb-12">
+                    <p className="font-mono text-[12px] text-muted mb-3">$ cat experience.log</p>
+                    <h2 className="text-[clamp(28px,4vw,48px)] font-bold text-primary">Experience</h2>
                 </div>
 
-                <div className="flex flex-col gap-4">
-                    {experience.map((entry) => (
+                <div className="flex flex-col gap-6">
+                    {experience.map((entry, index) => (
                         <div
                             key={entry.company}
-                            className="bg-surface border border-border border-l-2 border-l-accent rounded-[4px] p-6 transition-colors hover:border-accent/30"
+                            className="relative pl-6 border-l-[3px] border-l-accent"
                         >
-                            {/* Header row */}
-                            <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1 mb-5">
-                                <div>
-                                    <h3 className="text-[18px] font-bold text-primary">{entry.company}</h3>
-                                    <p className="text-[14px] font-mono text-accent mt-0.5">{entry.role}</p>
-                                </div>
-                                <div className="flex flex-col sm:items-end shrink-0">
-                                    <span className="font-mono text-[12px] text-accent">{entry.dates}</span>
-                                    <span className="font-mono text-[11px] text-muted mt-0.5">{entry.location}</span>
-                                </div>
+                            {/* Number */}
+                            <span className="absolute -left-[14px] top-0 w-6 h-6 bg-base border border-border rounded-full flex items-center justify-center font-mono text-[11px] text-muted">
+                                {String(index + 1).padStart(2, '0')}
+                            </span>
+
+                            {/* Header */}
+                            <div className="mb-4">
+                                <h3 className="text-[18px] font-semibold text-primary">{entry.company}</h3>
+                                <p className="font-mono text-[13px] text-muted mt-1">{entry.role} · {entry.dates}</p>
+                                <p className="font-mono text-[12px] text-muted">{entry.location}</p>
                             </div>
 
                             {/* Bullets */}
                             <ul className="space-y-3">
                                 {entry.bullets.map((bullet, i) => (
                                     <li key={i} className="flex items-start gap-3">
-                                        <span className="font-mono text-accent text-[13px] shrink-0 mt-[2px]">›</span>
-                                        <span className="text-[13px] text-secondary leading-[1.75]">{bullet}</span>
+                                        <span className="font-mono text-secondary text-[14px] shrink-0 mt-[1px]">›</span>
+                                        <span className="text-[14px] text-secondary leading-[1.75]">{bullet}</span>
                                     </li>
                                 ))}
                             </ul>
