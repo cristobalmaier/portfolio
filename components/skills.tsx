@@ -1,6 +1,6 @@
 "use client";
 
-import { Globe, Terminal, Network, Database, Shield, FileCode2, Cpu, LayoutTemplate, GitBranch } from "lucide-react";
+import { Globe, Terminal, Network, Database, Shield, FileCode2, LayoutTemplate } from "lucide-react";
 
 type SkillType = {
   icon: React.ComponentType<{ className?: string }>;
@@ -15,7 +15,7 @@ const offensiveSecurity: SkillType[] = [
     icon: Network,
     title: "Network Reconnaissance",
     description: "Learning host discovery, port scanning, and service fingerprinting in local lab environments.",
-    tools: ["nmap", "netcat"],
+    tools: ["nmap", "netcat", "dig"],
     filename: "network_reconnaissance.sh"
   },
   {
@@ -57,25 +57,11 @@ const development: SkillType[] = [
     filename: "python.sh"
   },
   {
-    icon: Cpu,
-    title: "Systems Programming",
-    description: "Low-level programming fundamentals including memory management, pointers, and data structures.",
-    tools: ["C++"],
-    filename: "systems_programming.sh"
-  },
-  {
     icon: LayoutTemplate,
     title: "Web Development",
     description: "Frontend and backend fundamentals applied in full-stack academic projects.",
     tools: ["HTML", "CSS", "JavaScript", "Node.js", "Express", "EJS", "MySQL"],
     filename: "web_development.sh"
-  },
-  {
-    icon: GitBranch,
-    title: "Version Control",
-    description: "Daily use of Git for project management, documentation, and collaborative development.",
-    tools: ["Git", "GitHub"],
-    filename: "version_control.sh"
   },
 ];
 

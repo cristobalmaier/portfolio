@@ -6,21 +6,21 @@ const projects = [
   {
     title: "NETSCOPE — Port Scanner",
     description:
-      "Simple TCP port scanner written in Python. Detects open ports and displays common service mappings. Built as a learning project to understand socket networking and concurrent scanning using ThreadPoolExecutor.",
+      "TCP port scanner built from scratch in Python. Maps open ports and identifies common services on target hosts. Designed as a first-phase recon tool for local lab engagements — faster to customize than running nmap flags from memory.",
     tags: ["Python", "Sockets", "TCP/IP", "Threading"],
     github: "https://github.com/cristobalmaier/port-scanner",
     buttonText: "View Code",
-    status: "Ongoing",
+    status: "In Progress",
     filename: "netscope---port-scanner.sh",
   },
   {
     title: "DIRSCOPE — Directory Fuzzer",
     description:
-      "Directory and web file fuzzer written in pure Python. Discovers hidden paths on HTTP/HTTPS servers using a wordlist, similar to ffuf or dirbuster. Handles concurrent scanning, status code colorization, and redirect resolution.",
+      "Directory and web file fuzzer written in pure Python. Discovers hidden paths on HTTP/HTTPS servers using a wordlist. Built as an alternative to ffuf for environments where installing external tools is not an option. Handles concurrent scanning, status code colorization, and redirect resolution.",
     tags: ["Python", "Fuzzing", "Reconnaissance", "Automation"],
     github: "https://github.com/cristobalmaier/dirscope",
     buttonText: "View Source",
-    status: "Ongoing",
+    status: "In Progress",
     filename: "dirscope---directory-fuzzer.sh",
   },
   {
